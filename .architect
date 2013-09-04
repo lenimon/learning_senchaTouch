@@ -1,0 +1,26 @@
+{
+    "expandedState": {
+        "data": true,
+        "model": true,
+        "component": true,
+        "controller": true,
+        "resource": true,
+        "031ca1b2-015c-4946-8b67-ad1cfccda1d5": {
+            "id": "031ca1b2-015c-4946-8b67-ad1cfccda1d5"
+        }
+    },
+    "tabState": {
+        "openTabs": []
+    },
+    "canvasState": {
+        "topInstance": null
+    },
+    "inspectorState": {
+        "topInstance": null,
+        "selectedInstance": null
+    },
+    "codeState": {
+        "topInstance": null
+    },
+    "editMode": "design"
+}

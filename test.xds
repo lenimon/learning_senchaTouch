@@ -1,0 +1,29 @@
+{
+    "name": "test",
+    "settings": {},
+    "xdsVersion": "2.2.2",
+    "xdsBuild": 991,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000503,
+    "framework": "touch22",
+    "topInstanceFileMap": {
+        "031ca1b2-015c-4946-8b67-ad1cfccda1d5": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        }
+    },
+    "viewOrderMap": {
+        "view": [],
+        "store": [],
+        "controller": [],
+        "model": [],
+        "resource": [
+            "031ca1b2-015c-4946-8b67-ad1cfccda1d5"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}
