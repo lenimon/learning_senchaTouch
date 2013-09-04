@@ -19,5 +19,8 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
-    name: 'MyApp'
+    views: [
+        'custom.ListGrid'
+    ],
+    name: 'test'
 });

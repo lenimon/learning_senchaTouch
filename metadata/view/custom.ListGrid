@@ -1,0 +1,638 @@
+{
+    "type": "Ext.dataview.List",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "rowCls": "",
+        "rowStyle": "",
+        "columns": [
+            "[{}]"
+        ],
+        "header": [
+            "{\r",
+            "    xtype  : 'toolbar',\r",
+            "    docked : 'top',\r",
+            "    cls    : 'x-grid-header'\r",
+            "}"
+        ],
+        "_getRowClsFn": "",
+        "_getRowStyleFn": "",
+        "layout": null,
+        "cls": [
+            "touchgridpanel"
+        ],
+        "fullscreen": null,
+        "height": "100%",
+        "designer|userClassName": "custom.ListGrid",
+        "designer|userAlias": "ListGrid",
+        "mixins": [
+            "['Ext.ux.touch.grid.feature.Feature']"
+        ],
+        "requires": [
+            "Ext.ux.touch.grid.feature.Feature",
+            "Ext.Toolbar"
+        ],
+        "emptyText": "Empty",
+        "itemCls": "x-touchgrid-item",
+        "store": null,
+        "itemHeight": 33
+    },
+    "configAlternates": {
+        "columns": "array",
+        "header": "object"
+    },
+    "designerId": "44cbd26e-53c9-4a60-ad1d-25bf80fc32a5",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "rowCls",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "rowStyle",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "columns",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "header",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "_getRowClsFn",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "_getRowStyleFn",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "layout",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "var me = this;",
+                    "",
+                    "me.callParent();",
+                    "",
+                    "if (typeof me.initFeatures === 'function' && typeof me.features === 'object') {",
+                    "    me.initFeatures(me.features, 'initialize');",
+                    "}",
+                    ""
+                ]
+            },
+            "designerId": "5d1b8204-09e1-4692-b1fa-094aab4fc1c9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "constructor",
+                "designer|params": [
+                    "config"
+                ],
+                "implHandler": [
+                    "var me       = this,",
+                    "    features = me.features = config.features || me.config.features || me.features;",
+                    "",
+                    "me._getRowClsFn   = Ext.bind(me.getRowCls,   me);",
+                    "me._getRowStyleFn = Ext.bind(me.getRowStyle, me);",
+                    "",
+                    "me.callParent([config]);",
+                    "",
+                    "if (typeof me.initFeatures === 'function' && typeof config.features === 'object') {",
+                    "    me.initFeatures(features, 'constructor');",
+                    "}",
+                    "",
+                    "me.setWidth(me.priv_buildWidth());",
+                    ""
+                ]
+            },
+            "designerId": "97564d9b-15c1-4aec-bcca-d10544fdb74a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "applyColumns",
+                "designer|params": [
+                    "columns"
+                ],
+                "implHandler": [
+                    "var c          = 0,",
+                    "    cLen       = columns.length,",
+                    "    newColumns = [];",
+                    "",
+                    "for (; c < cLen; c++) {",
+                    "    newColumns.push(",
+                    "    Ext.merge({}, columns[c])",
+                    "    );",
+                    "}",
+                    "",
+                    "return newColumns;",
+                    ""
+                ]
+            },
+            "designerId": "b7ea7896-06d0-40a7-8450-d10757ac962c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateColumns",
+                "implHandler": [
+                    "if (this._itemTpl) {",
+                    "    this.setItemTpl(null);",
+                    "}",
+                    ""
+                ]
+            },
+            "designerId": "08104c80-d6d9-4631-8667-ba06e22c823e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "refreshScroller",
+                "implHandler": [
+                    "var scroller = this.getScrollable().getScroller();",
+                    "scroller.refresh();",
+                    ""
+                ]
+            },
+            "designerId": "df412958-507a-40ed-88c6-35f0769316d1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "applyHeader",
+                "designer|params": [
+                    "config"
+                ],
+                "implHandler": [
+                    "Ext.apply(config, {",
+                    "    docked : 'top',",
+                    "    cls    : 'x-grid-header'",
+                    "});",
+                    "config.minHeight = 30;",
+                    "return Ext.factory(config, Ext.Toolbar, this.getHeader());",
+                    ""
+                ]
+            },
+            "designerId": "48896c01-7dd7-4edc-899a-fb0e6984e8e8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateHeader",
+                "designer|params": [
+                    "header"
+                ],
+                "implHandler": [
+                    "this.insert(0, header);"
+                ]
+            },
+            "designerId": "aa2b17fd-ec6e-4013-91a6-f0c84d3827ad"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "priv_buildWidth",
+                "implHandler": [
+                    "var me       = this,",
+                    "    columns  = me.getColumns(),",
+                    "    c        = 0,",
+                    "    cNum     = columns.length,",
+                    "    retWidth = 0,",
+                    "    stop     = false,",
+                    "    defaults = this.getDefaults() || {},",
+                    "    column, width;",
+                    "",
+                    "for (; c < cNum; c++) {",
+                    "    column = columns[c];",
+                    "    width  = column.width || defaults.column_width;",
+                    "",
+                    "    if (!Ext.isNumber(width)) {",
+                    "        stop = true;",
+                    "        break;",
+                    "    }",
+                    "",
+                    "    retWidth += width;",
+                    "}",
+                    "",
+                    "return stop ? undefined : retWidth;",
+                    ""
+                ]
+            },
+            "designerId": "0b889316-3969-4010-8de2-130634870bbb"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "priv_defaultRenderer",
+                "designer|params": [
+                    "value"
+                ],
+                "implHandler": [
+                    "return Ext.isEmpty(value) ? '&nbsp;' : value;"
+                ]
+            },
+            "designerId": "fe079c09-0dcc-42ad-a812-383ab5673a85"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "applyItemTpl",
+                "designer|params": [
+                    "tpl"
+                ],
+                "implHandler": [
+                    "if (!tpl) {",
+                    "    tpl = this.priv_buildTpl(this.getColumns(), false);",
+                    "}",
+                    "",
+                    "if (!(tpl instanceof Ext.XTemplate)) {",
+                    "    tpl = Ext.create('Ext.XTemplate', tpl.tpl, tpl.renderers);",
+                    "}",
+                    "",
+                    "return tpl;"
+                ]
+            },
+            "designerId": "1d70d9fd-416f-4fed-b4eb-966586d6d2a8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "priv_updateItemTpl",
+                "designer|params": [
+                    "newTpl"
+                ],
+                "implHandler": [
+                    "var listItems = this.listItems || [],",
+                    "    ln        = listItems.length || 0,",
+                    "    store     = this.getStore(),",
+                    "    i, listItem;",
+                    "",
+                    "for (i = 0; i < ln; i++) {",
+                    "    listItem = listItems[i];",
+                    "",
+                    "    listItem.setTpl(newTpl);",
+                    "}",
+                    "",
+                    "if (store && store.getCount()) {",
+                    "    this.doRefresh();",
+                    "}",
+                    ""
+                ]
+            },
+            "designerId": "9db51c37-6ff6-4c44-8a14-02ffe97763e9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateItemTpl",
+                "implHandler": [
+                    "var me = this;",
+                    "",
+                    "me.priv_updateItemTpl(me.getItemTpl());",
+                    "",
+                    "header = me.getHeader();",
+                    "html   = me.priv_buildTpl(me.getColumns(), true);",
+                    "",
+                    "header.setHtml(html.tpl);",
+                    "",
+                    "me.refresh();",
+                    ""
+                ]
+            },
+            "designerId": "4bb52460-0136-43f7-a3d9-4ee78699f899"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "priv_buildTpl",
+                "designer|params": [
+                    "columns",
+                    "header"
+                ],
+                "implHandler": [
+                    "",
+                    "var me         = this,",
+                    "    tpl        = [],",
+                    "    c          = 0,",
+                    "    cNum       = columns.length,",
+                    "    basePrefix = Ext.baseCSSPrefix,",
+                    "    renderers  = {},",
+                    "    defaults   = me.getDefaults() || {},",
+                    "    rowCls     = me.getRowCls(),",
+                    "    rowStyle   = me.getRowStyle(),",
+                    "    itemHeight = me.getItemHeight ? me.getItemHeight() : false,",
+                    "    rcls       = null,",
+                    "    rstl       = null,",
+                    "    column, hidden, css, styles, attributes, width, renderer, rendererName, innerText;",
+                    "",
+                    "for (; c < cNum; c++) {",
+                    "    column = columns[c];",
+                    "    hidden = column.hidden;",
+                    "",
+                    "    if (hidden) {",
+                    "        continue;",
+                    "    }",
+                    "",
+                    "    css          = [basePrefix + 'grid-cell'];",
+                    "    styles       = [];",
+                    "    attributes   = ['dataindex=\"' + column.dataIndex + '\"'];",
+                    "    width        = column.width || defaults.column_width;",
+                    "    renderer     = column[header ? 'headerRenderer' : 'renderer'] || this.priv_defaultRenderer;",
+                    "    rendererName = column.dataIndex + '_renderer';",
+                    "",
+                    "    if (itemHeight) {",
+                    "        styles.push('line-height: ' + itemHeight + 'px;');",
+                    "    }",
+                    "",
+                    "    if (header) {",
+                    "        css.push(basePrefix + 'grid-cell-hd');",
+                    "        innerText = renderer.call(me, column.header);",
+                    "    } else {",
+                    "        innerText = '{[this.' + rendererName + '(values.' + column.dataIndex + ', values)]}';",
+                    "",
+                    "        if (column.style) {",
+                    "            styles.push(column.style);",
+                    "        }",
+                    "",
+                    "        renderers[rendererName] = renderer;",
+                    "    }",
+                    "",
+                    "    if (column.cls) {",
+                    "        css.push(column.cls);",
+                    "    }",
+                    "",
+                    "    if (width) {",
+                    "        styles.push('width: ' + width + (Ext.isString(width) ? '' : 'px') + ';');",
+                    "    }",
+                    "",
+                    "    if (styles.length > 0) {",
+                    "        attributes.push('style=\"' + styles.join(' ') + '\"');",
+                    "    }",
+                    "",
+                    "    tpl.push('<div class=\"' + css.join(' ') + '\" ' + attributes.join(' ') + '>' + innerText + '</div>');",
+                    "}",
+                    "",
+                    "tpl = tpl.join('');",
+                    "",
+                    "if (!header) {",
+                    "    if (Ext.isFunction(rowCls) || Ext.isString(rowCls)) {",
+                    "        renderers._getRowCls = me._getRowClsFn;",
+                    "        rcls                 = 'class=\"' + basePrefix + 'grid-row {[this._getRowCls(values) || \\'\\']}\"';",
+                    "    }",
+                    "",
+                    "    if (Ext.isFunction(rowStyle) || Ext.isString(rowStyle)) {",
+                    "        renderers._getRowStyle = me._getRowStyleFn;",
+                    "        rstl                   = 'style=\"{[this._getRowStyle(values) || \\'\\']}\"';",
+                    "    }",
+                    "",
+                    "    if (rcls || rstl) {",
+                    "        tpl = '<div' + (rcls ? ' ' + rcls : '') + (rstl ? ' ' + rstl : '') + '>' + tpl + '</div>';",
+                    "    }",
+                    "}",
+                    "",
+                    "return {",
+                    "    tpl       : tpl,",
+                    "    renderers : renderers",
+                    "};"
+                ]
+            },
+            "designerId": "571c1f9d-28f9-45b1-a0b0-a396097a6cbe"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getRowCls",
+                "designer|params": [
+                    "data"
+                ],
+                "implHandler": [
+                    "var me     = this,",
+                    "    rowCls = me._rowCls;",
+                    "",
+                    "if (typeof rowCls === 'function') {",
+                    "    return rowCls.call(me, data);",
+                    "}",
+                    "",
+                    "return rowCls;",
+                    ""
+                ]
+            },
+            "designerId": "79d9e8e8-2e6d-4298-bea0-79a6f37005d2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getRowStyle",
+                "designer|params": [
+                    "data"
+                ],
+                "implHandler": [
+                    "var me       = this,",
+                    "    rowStyle = me._rowStyle;",
+                    "",
+                    "if (typeof rowStyle === 'function') {",
+                    "    return rowStyle.call(me, data);",
+                    "}",
+                    "",
+                    "return rowStyle;",
+                    ""
+                ]
+            },
+            "designerId": "ccceaf8a-bce0-45eb-b9a3-2ecfa366b063"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getColumn",
+                "designer|params": [
+                    "dataIndex"
+                ],
+                "implHandler": [
+                    "var me      = this,",
+                    "    columns = me.getColumns(),",
+                    "    c       = 0,",
+                    "    cNum    = columns.length,",
+                    "    column;",
+                    "",
+                    "for (; c < cNum; c++) {",
+                    "    column = columns[c];",
+                    "    ",
+                    "    if (column.dataIndex === dataIndex) {",
+                    "        return column;",
+                    "    }",
+                    "}",
+                    "",
+                    "return null;",
+                    ""
+                ]
+            },
+            "designerId": "8b77c0e9-58d0-49aa-ab36-dc3c32635178"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "toggleColumn",
+                "designer|params": [
+                    "index",
+                    "hide"
+                ],
+                "implHandler": [
+                    "var me      = this,",
+                    "    columns = me.getColumns(),",
+                    "    column  = columns[index];",
+                    "",
+                    "if (!Ext.isDefined(hide)) {",
+                    "    hide = !column.hidden;",
+                    "}",
+                    "",
+                    "column.hidden = hide;",
+                    "",
+                    "me.setItemTpl(null); //trigger new tpl on items and header",
+                    "me.refresh();",
+                    ""
+                ]
+            },
+            "designerId": "bf3835a9-0169-4244-859e-b897fc7b44d3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "hideColumn",
+                "designer|params": [
+                    "index"
+                ],
+                "implHandler": [
+                    "this.toggleColumn(index, true);"
+                ]
+            },
+            "designerId": "68c7151c-5bc8-4623-b602-acd9d9aea790"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "showColumn",
+                "designer|params": [
+                    "index"
+                ],
+                "implHandler": [
+                    "this.toggleColumn(index, false);"
+                ]
+            },
+            "designerId": "9c11ffe6-258a-4699-9cb2-59c90c64fe56"
+        }
+    ]
+}

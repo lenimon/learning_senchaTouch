@@ -12,10 +12,20 @@
                 "metadata/resource/Library"
             ],
             "className": "Library"
+        },
+        "44cbd26e-53c9-4a60-ad1d-25bf80fc32a5": {
+            "paths": [
+                "metadata/view/custom.ListGrid",
+                "app/view/override/custom/ListGrid.js",
+                "app/view/custom/ListGrid.js"
+            ],
+            "className": "custom.ListGrid"
         }
     },
     "viewOrderMap": {
-        "view": [],
+        "view": [
+            "44cbd26e-53c9-4a60-ad1d-25bf80fc32a5"
+        ],
         "store": [],
         "controller": [],
         "model": [],

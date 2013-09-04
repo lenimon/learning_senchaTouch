@@ -6,7 +6,11 @@
     },
     "codeClass": null,
     "userConfig": {
-        "name": "MyApp"
+        "views": [
+            "custom.ListGrid"
+        ],
+        "appFolder": null,
+        "name": "test"
     },
     "designerId": "application"
 }
